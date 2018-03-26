@@ -83,6 +83,8 @@ public class Test {
 		hobby.add("walking");
 		p.setHobbies(hobby);
 		System.out.println(p);
+
+
 	}
 
 	public static void strategyTest(){
