@@ -1,9 +1,13 @@
 package com.san.lib.design;
 
+import com.san.lib.design.factory.Location;
+import com.san.lib.design.factory.LocationFactory;
 import com.san.lib.design.observer.Observable;
 import com.san.lib.design.observer.Observer;
 import com.san.lib.design.observer.Weather;
 import com.san.lib.design.prototype.Person;
+import com.san.lib.design.strategy.Strategy;
+import com.san.lib.design.strategy.TravelContext;
 
 import java.util.ArrayList;
 
@@ -16,6 +20,8 @@ public class Test {
 		System.out.println("this is test");
 		observerTest();
 		prototypeTest();
+		strategyTest();
+		factoryTest();
 	}
 
 	/*
@@ -77,5 +83,44 @@ public class Test {
 		hobby.add("walking");
 		p.setHobbies(hobby);
 		System.out.println(p);
+	}
+
+	public static void strategyTest(){
+		TravelContext travelContext = new TravelContext();
+		travelContext.setStrategy(new WalkStrategy());
+		travelContext.travel();
+
+		travelContext.setStrategy(new PlaneStrategy());
+		travelContext.travel();
+
+		travelContext.setStrategy(new RealwayStrategy());
+		travelContext.travel();
+	}
+
+	static class WalkStrategy implements Strategy {
+		@Override
+		public void travel() {
+			System.out.println("walk travelling....");
+		}
+	}
+
+	static class PlaneStrategy implements Strategy {
+		@Override
+		public void travel() {
+			System.out.println("plane travelling....");
+		}
+	}
+
+	static class RealwayStrategy implements Strategy {
+		@Override
+		public void travel() {
+			System.out.println("realway travelling....");
+		}
+	}
+
+	public static void factoryTest(){
+		Location position = LocationFactory.getInstance("gaode");
+		position.getPosition();
+		position.getCityName(10,20);
 	}
 }
