@@ -3,6 +3,9 @@ package com.san.lib.design;
 import com.san.lib.design.observer.Observable;
 import com.san.lib.design.observer.Observer;
 import com.san.lib.design.observer.Weather;
+import com.san.lib.design.prototype.Person;
+
+import java.util.ArrayList;
 
 /**
  * Created by test on 18/3/26.
@@ -12,6 +15,7 @@ public class Test {
 	public static void main(String[] args){
 		System.out.println("this is test");
 		observerTest();
+		prototypeTest();
 	}
 
 	/*
@@ -50,5 +54,28 @@ public class Test {
 
 		Weather weather2 = new Weather("台风");
 		observable.notifyObservers(weather2);
+	}
+
+	public static void prototypeTest(){
+		Person person = new Person();
+		person.setName("one");
+		person.setAddress("shanghai");
+		person.setAge(13);
+		person.setHeight(145);
+		person.setWeight(45);
+		person.setPhone("123456");
+		ArrayList<String> hobby = new ArrayList<>();
+		hobby.add("football");
+		hobby.add("backetball");
+		hobby.add("swim");
+		person.setHobbies(hobby);
+		System.out.println(person);
+
+		Person p = (Person) person.clone();
+		System.out.println(p);
+		p.setName("new ONE");
+		hobby.add("walking");
+		p.setHobbies(hobby);
+		System.out.println(p);
 	}
 }
