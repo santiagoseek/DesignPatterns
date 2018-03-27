@@ -6,12 +6,12 @@ package com.san.lib.design.factory;
 
 public class LocationFactory {
 
-	public static Location getInstance(String type){
+	public static ILocation getInstance(String type){
 		if("baidu".equals(type)){
-			return new BaiduLocation();
+			return new BaiduILocation();
 		}else{
 			if("gaode".equals(type)){
-				return new GaodeLocation();
+				return new GaodeILocation();
 			}else{
 				return null;
 			}
@@ -19,7 +19,7 @@ public class LocationFactory {
 	}
 
 
-	static class BaiduLocation implements Location{
+	static class BaiduILocation implements ILocation {
 		@Override
 		public void getPosition() {
 			System.out.println("通过百度定位获取当前的位置信息。。。");
@@ -31,7 +31,7 @@ public class LocationFactory {
 		}
 	}
 
-	static class GaodeLocation implements Location{
+	static class GaodeILocation implements ILocation {
 		@Override
 		public void getPosition() {
 			System.out.println("通过高德定位获取当前的位置信息。。。");

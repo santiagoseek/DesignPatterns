@@ -5,19 +5,19 @@ package com.san.lib.design.strategy;
  */
 
 public class TravelContext {
-	private Strategy strategy;
+	private IStrategy iStrategy;
 
-	public Strategy getStrategy() {
-		return strategy;
+	public IStrategy getStrategy() {
+		return iStrategy;
 	}
 
-	public void setStrategy(Strategy strategy) {
-		this.strategy = strategy;
+	public void setStrategy(IStrategy iStrategy) {
+		this.iStrategy = iStrategy;
 	}
 
 	public void travel(){
-		if(strategy!=null){
-			strategy.travel();
+		if(iStrategy !=null){
+			iStrategy.travel();
 		}
 	}
 }
